@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: /forgot-password
+Disallow: /api/*
+Disallow: /reset-password
