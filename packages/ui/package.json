@@ -13,7 +13,11 @@
     },
     "scripts": {
         "build": "cross-env PACKAGE_NAME=ui vite build --config ../../developer/config/vite/vite.library-config-react.mts",
-        "lint": "eslint ./lib --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+        "lint": "eslint ./lib --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "clean": "rm -rf node_modules",
+        "test": "vitest",
+        "test:w": "vitest --watch",
+        "test:coverage": "vitest --coverage"
     },
     "peerDependencies": {
         "@types/react": "*",
