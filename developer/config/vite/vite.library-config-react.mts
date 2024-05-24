@@ -17,6 +17,7 @@ export default vite.defineConfig({
             insertTypesEntry: true,
         }),
     ],
+    base: './',
     test: {
         globals: true,
         environment: 'jsdom',
