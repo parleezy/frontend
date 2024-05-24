@@ -1,0 +1,10 @@
+{
+    "extends": "../../developer/config/tsconfig/tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "types": ["vitest/globals"]
+    }
+}
