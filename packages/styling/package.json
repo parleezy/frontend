@@ -1,5 +1,5 @@
 {
-    "name": "@parleezy/styling",
+    "name": "@thedeveloperkit/styling",
     "main": "./dist/styling.umd.js",
     "module": "./dist/styling.es.js",
     "types": "./dist/index.d.ts",
@@ -12,7 +12,8 @@
         }
     },
     "scripts": {
-        "build": "cross-env PACKAGE_NAME=styling vite build --config ../../developer/config/vite/vite.library-config-react.mts",
+        "dev": "nodemon --watch ./lib --ext ts,tsx --delay 1 --exec 'pnpm run build'",
+        "build": "vite build",
         "lint": "eslint ./lib --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
     },
     "peerDependencies": {
@@ -20,6 +21,7 @@
         "@types/react-dom": "*",
         "@types/styled-components": "*",
         "framer-motion": "^11",
+        "polished": "^4.3.1",
         "react": "^17.0 || ^18.0",
         "react-dom": "^17.0 || ^18.0",
         "styled-components": "6.0.9"

@@ -1,9 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
 
-/**
- * This is a global reset file
- */
-
 export const Reset = createGlobalStyle`
     *,
     *:after,
@@ -25,6 +21,8 @@ export const Reset = createGlobalStyle`
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -webkit-text-size-adjust: 100%;
+        font-family: ${({ theme }) => theme.typography.font.family.primary};
+        color: ${({ theme }) => theme.typography.font.color.primary};
     }
 
     h1,
