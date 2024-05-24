@@ -20,7 +20,6 @@
         "@types/react-dom": "*",
         "@types/styled-components": "*",
         "framer-motion": "^11",
-        "polished": "^4.3.1",
         "react": "^17.0 || ^18.0",
         "react-dom": "^17.0 || ^18.0",
         "styled-components": "6.0.9"
