@@ -31,5 +31,6 @@ export function useComboKeyPress(keys: string[], action: () => void) {
         if (allKeysPressed && noExtraKeys) {
             action()
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pressedKeys])
 }

@@ -20,6 +20,7 @@ export function useCopyToClipboard() {
 
         navigator.clipboard
             .writeText(text)
+            // eslint-disable-next-line promise/always-return
             .then(() => {
                 setCopied(true)
                 timeoutIdRef.current = setTimeout(() => setCopied(false), 2000)
