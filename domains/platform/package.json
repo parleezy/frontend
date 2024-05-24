@@ -10,6 +10,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@parleezy/icons": "workspace:^",
         "@parleezy/styling": "workspace:^",
         "@parleezy/ui": "workspace:^",
         "@tanstack/react-router": "^1.33.8",

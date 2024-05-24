@@ -215,6 +215,9 @@ importers:
 
   domains/platform:
     dependencies:
+      '@parleezy/icons':
+        specifier: workspace:^
+        version: link:../../packages/icons
       '@parleezy/styling':
         specifier: workspace:^
         version: link:../../packages/styling
