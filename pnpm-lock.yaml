@@ -215,6 +215,9 @@ importers:
 
   domains/platform:
     dependencies:
+      '@parleezy/icons':
+        specifier: workspace:^
+        version: link:../../packages/icons
       '@parleezy/styling':
         specifier: workspace:^
         version: link:../../packages/styling
@@ -242,6 +245,9 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.3.1
+      react-circle-flags:
+        specifier: ^0.0.20
+        version: 0.0.20(react@18.3.1)
       react-div-100vh:
         specifier: ^0.7.0
         version: 0.7.0(react@18.3.1)
@@ -251,12 +257,30 @@ importers:
       react-i18next:
         specifier: ^14.1.2
         version: 14.1.2(i18next@23.11.5)(react-dom@18.3.1)(react@18.3.1)
+      react-icons:
+        specifier: ^5.2.1
+        version: 5.2.1(react@18.3.1)
       react-spinners:
         specifier: ^0.13.8
         version: 0.13.8(react-dom@18.3.1)(react@18.3.1)
       styled-components:
         specifier: ^6.1.11
         version: 6.1.11(react-dom@18.3.1)(react@18.3.1)
+
+  packages/icons:
+    dependencies:
+      '@types/react':
+        specifier: '*'
+        version: 18.3.3
+      '@types/react-dom':
+        specifier: '*'
+        version: 18.3.0
+      react:
+        specifier: ^16.8 || ^17.0 || ^18.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^16.8 || ^17.0 || ^18.0
+        version: 18.3.1(react@18.3.1)
 
   packages/styling:
     dependencies:
@@ -287,6 +311,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@parleezy/icons':
+        specifier: workspace:^
+        version: link:../icons
       '@parleezy/styling':
         specifier: workspace:^
         version: link:../styling
@@ -305,6 +332,9 @@ importers:
       react:
         specifier: ^17.0 || ^18.0
         version: 18.3.1
+      react-circle-flags:
+        specifier: ^0.0.20
+        version: 0.0.20(react@18.3.1)
       react-dom:
         specifier: ^17.0 || ^18.0
         version: 18.3.1(react@18.3.1)
@@ -5975,6 +6005,15 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
+  /react-circle-flags@0.0.20(react@18.3.1):
+    resolution: {integrity: sha512-/Q18+veXCSA0lQWbnRo/AtR4G/NDRrukKyU6Cl7iLLXAG9KywjgFdPqHD2YJklicjfALXm2wLdbONRs0QKDITA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.3.1
+    dev: false
+
   /react-div-100vh@0.7.0(react@18.3.1):
     resolution: {integrity: sha512-I3d77tQyaSlOx/6vurDDLk7upb5GA2ldEtVXkk7Kn5cy+tLlS0KlqDK14xUxlxh7jz4StjgKcwFyrpymsPpomA==}
     peerDependencies:
@@ -6020,6 +6059,14 @@ packages:
       i18next: 23.11.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    dev: false
+
+  /react-icons@5.2.1(react@18.3.1):
+    resolution: {integrity: sha512-zdbW5GstTzXaVKvGSyTaBalt7HSfuK5ovrzlpyiWHAFXndXTdd/1hdDHI4xBM1Mn7YriT6aqESucFl9kEXzrdw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.3.1
     dev: false
 
   /react-is@16.13.1:
