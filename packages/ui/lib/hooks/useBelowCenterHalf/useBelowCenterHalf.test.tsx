@@ -20,7 +20,6 @@ describe('useBelowCenterHalf', () => {
     })
 
     afterEach(() => {
-        // Restore mocks
         vi.restoreAllMocks()
     })
 

@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { ReactElement } from 'react'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'

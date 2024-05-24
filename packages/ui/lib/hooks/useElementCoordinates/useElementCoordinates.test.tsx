@@ -3,6 +3,54 @@ import { renderHook, act } from '@/test/index'
 // Hook
 import { useElementCoordinates, ElementCoordinates } from './useElementCoordinates'
 
+interface ResizeObserverEntry {
+    target: Element
+    contentRect: DOMRectReadOnly
+    borderBoxSize?: ReadonlyArray<ResizeObserverSize>
+    contentBoxSize?: ReadonlyArray<ResizeObserverSize>
+    devicePixelContentBoxSize?: ReadonlyArray<ResizeObserverSize>
+}
+
+type ResizeObserverCallback = (entries: ResizeObserverEntry[], observer: ResizeObserver) => void
+
+class MockResizeObserver {
+    private callback: ResizeObserverCallback
+
+    constructor(callback: ResizeObserverCallback) {
+        this.callback = callback
+    }
+
+    observe() {
+        const entries: ResizeObserverEntry[] = [
+            {
+                target: document.documentElement,
+                contentRect: {
+                    x: 0,
+                    y: 0,
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    top: 0,
+                    right: window.innerWidth,
+                    bottom: window.innerHeight,
+                    left: 0,
+                    toJSON: () => ({}),
+                },
+                borderBoxSize: [],
+                contentBoxSize: [],
+                devicePixelContentBoxSize: [],
+            },
+        ]
+        this.callback(entries, this)
+    }
+
+    unobserve() {}
+
+    disconnect() {}
+}
+
+// Ensure the mock matches the expected type
+global.ResizeObserver = MockResizeObserver as unknown as typeof ResizeObserver
+
 describe('useElementCoordinates', () => {
     const mockRef = {
         current: {
