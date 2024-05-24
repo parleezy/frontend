@@ -1,5 +1,5 @@
 {
-    "name": "@thedeveloperkit/styling",
+    "name": "@parleezy/styling",
     "main": "./dist/styling.umd.js",
     "module": "./dist/styling.es.js",
     "types": "./dist/index.d.ts",

@@ -1,7 +1,7 @@
 import { Transition, Variants } from 'framer-motion'
 
 // Packages
-import { ThemeInterface } from '@thedeveloperkit/styling'
+import { ThemeInterface } from '@parleezy/styling'
 
 // Types
 import { AnimationTransitionType, AnimationVariantType } from '@/types/animation'

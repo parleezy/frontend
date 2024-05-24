@@ -1,5 +1,5 @@
 // Packages
-import { ThemeInterface } from '@thedeveloperkit/styling'
+import { ThemeInterface } from '@parleezy/styling'
 
 // Hooks
 import { ElementCoordinates } from '@/hooks/useElementCoordinates'

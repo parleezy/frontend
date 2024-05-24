@@ -1,4 +1,4 @@
-import { ThemeInterface } from '@thedeveloperkit/styling'
+import { ThemeInterface } from '@parleezy/styling'
 
 // Types
 import { BodySizeType, HeadingSizeType } from '@/types/typography'

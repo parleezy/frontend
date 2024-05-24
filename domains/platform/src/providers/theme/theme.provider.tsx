@@ -1,12 +1,11 @@
 import { PropsWithChildren } from 'react'
 import { ThemeProvider } from 'styled-components'
 
-// Packages
-import { Reset } from '@parleezy/styling'
+import { Reset, Themes } from '@parleezy/styling'
 
 export function Provider({ children }: PropsWithChildren) {
     return (
-        <ThemeProvider theme={{}}>
+        <ThemeProvider theme={Themes.light}>
             <Reset />
             {children}
         </ThemeProvider>

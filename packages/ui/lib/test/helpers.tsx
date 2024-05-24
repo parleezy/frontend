@@ -3,7 +3,7 @@ import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 
 // Packages
-import { Themes } from '@thedeveloperkit/styling'
+import { Themes } from '@parleezy/styling'
 
 interface AllTheProvidersProps {
     children: React.ReactNode
