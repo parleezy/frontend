@@ -20,8 +20,6 @@
         "test:coverage": "vitest --coverage"
     },
     "peerDependencies": {
-        "@parleezy/icons": "workspace:^",
-        "@parleezy/styling": "workspace:^",
         "@types/react": "*",
         "@types/react-dom": "*",
         "@types/styled-components": "*",
@@ -43,5 +41,9 @@
         "@types/styled-components": {
             "optional": true
         }
+    },
+    "dependencies": {
+        "@parleezy/icons": "workspace:^",
+        "@parleezy/styling": "workspace:^"
     }
 }

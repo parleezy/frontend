@@ -38,8 +38,6 @@ export default vite.defineConfig({
         },
         rollupOptions: {
             external: [
-                '@parleezy/icons',
-                '@parleezy/styling',
                 'framer-motion',
                 'polished',
                 'react-div-100vh',
@@ -50,7 +48,6 @@ export default vite.defineConfig({
             ],
             output: {
                 globals: {
-                    '@parleezy/icons': 'icons',
                     'framer-motion': 'Framer',
                     polished: 'polished',
                     react: 'React',
