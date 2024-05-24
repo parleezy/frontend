@@ -1,6 +1,11 @@
-import ReactDOM from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 
 // Providers
-import { Providers } from './providers/providers'
+import { Providers } from './providers'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<Providers />)
+const rootElement = document.getElementById('root')!
+
+if (!rootElement.innerHTML) {
+    const root = createRoot(rootElement)
+    root.render(<Providers />)
+}

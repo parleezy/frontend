@@ -56,6 +56,9 @@ importers:
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
+      husky:
+        specifier: ^9.0.11
+        version: 9.0.11
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -83,6 +86,15 @@ importers:
 
   domains/office:
     dependencies:
+      '@parleezy/styling':
+        specifier: workspace:^
+        version: link:../../packages/styling
+      '@tanstack/react-router':
+        specifier: ^1.33.8
+        version: 1.33.8(react-dom@18.3.1)(react@18.3.1)
+      framer-motion:
+        specifier: ^11.2.6
+        version: 11.2.6(react-dom@18.3.1)(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -2066,7 +2078,6 @@ packages:
   /@tanstack/history@1.31.16:
     resolution: {integrity: sha512-rahAZXlR879P7dngDH7BZwGYiODA9D5Hqo6nUHn9GAURcqZU5IW0ZiT54dPtV5EPES7muZZmknReYueDHs7FFQ==}
     engines: {node: '>=12'}
-    dev: true
 
   /@tanstack/query-core@5.36.1:
     resolution: {integrity: sha512-BteWYEPUcucEu3NBcDAgKuI4U25R9aPrHSP6YSf2NvaD2pSlIQTdqOfLRsxH9WdRYg7k0Uom35Uacb6nvbIMJg==}
@@ -2109,7 +2120,6 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
-    dev: true
 
   /@tanstack/react-store@0.2.1(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-tEbMCQjbeVw9KOP/202LfqZMSNAVi6zYkkp1kBom8nFuMx/965Hzes3+6G6b/comCwVxoJU8Gg9IrcF8yRPthw==}
@@ -2121,7 +2131,6 @@ packages:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       use-sync-external-store: 1.2.2(react@18.3.1)
-    dev: true
 
   /@tanstack/router-devtools@1.33.8(csstype@3.1.3)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-MiORiHK8XECUu/2MdT+QJhE55x/muv+uWk6Jq/qo88iUeBBilOj2Td5sxfjkhs22IMlACI9o5H9toGZf/1cVRA==}
@@ -2175,7 +2184,6 @@ packages:
 
   /@tanstack/store@0.1.3:
     resolution: {integrity: sha512-GnolmC8Fr4mvsHE1fGQmR3Nm0eBO3KnZjDU0a+P3TeQNM/dDscFGxtA7p31NplQNW3KwBw4t1RVFmz0VeKLxcw==}
-    dev: true
 
   /@types/argparse@1.0.38:
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
@@ -3474,6 +3482,12 @@ packages:
     engines: {node: '>=16.17.0'}
     dev: true
 
+  /husky@9.0.11:
+    resolution: {integrity: sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dev: true
+
   /ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
     engines: {node: '>= 4'}
@@ -4483,11 +4497,9 @@ packages:
 
   /tiny-invariant@1.3.3:
     resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
-    dev: true
 
   /tiny-warning@1.0.3:
     resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
-    dev: true
 
   /tinybench@2.8.0:
     resolution: {integrity: sha512-1/eK7zUnIklz4JUUlL+658n58XO2hHLQfSk1Zf2LKieUjxidN16eKFEoDEfjHc3ohofSSqK3X5yO6VGb6iW8Lw==}
@@ -4706,7 +4718,6 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.3.1
-    dev: true
 
   /validator@13.12.0:
     resolution: {integrity: sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==}
