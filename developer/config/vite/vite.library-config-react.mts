@@ -37,11 +37,25 @@ export default vite.defineConfig({
             fileName: (format) => `${process.env.PACKAGE_NAME}.${format}.js`,
         },
         rollupOptions: {
-            external: ['framer-motion', 'react', 'react-dom', 'styled-components'],
+            external: [
+                '@parleezy/icons',
+                '@parleezy/styling',
+                'framer-motion',
+                'polished',
+                'react-div-100vh',
+                'react',
+                'react-circle-flags',
+                'react-dom',
+                'styled-components',
+            ],
             output: {
                 globals: {
+                    '@parleezy/icons': 'icons',
                     'framer-motion': 'Framer',
+                    polished: 'polished',
                     react: 'React',
+                    'react-circle-flags': 'reactCircleFlags',
+                    'react-div-100vh': 'Div100vh',
                     'react-dom': 'ReactDOM',
                     'styled-components': 'styled',
                 },

@@ -210,14 +210,11 @@ importers:
         specifier: ^0.13.8
         version: 0.13.8(react-dom@18.3.1)(react@18.3.1)
       styled-components:
-        specifier: ^6.1.11
-        version: 6.1.11(react-dom@18.3.1)(react@18.3.1)
+        specifier: 6.0.9
+        version: 6.0.9(react-dom@18.3.1)(react@18.3.1)
 
   domains/platform:
     dependencies:
-      '@parleezy/icons':
-        specifier: workspace:^
-        version: link:../../packages/icons
       '@parleezy/styling':
         specifier: workspace:^
         version: link:../../packages/styling
@@ -267,8 +264,8 @@ importers:
         specifier: ^0.13.8
         version: 0.13.8(react-dom@18.3.1)(react@18.3.1)
       styled-components:
-        specifier: ^6.1.11
-        version: 6.1.11(react-dom@18.3.1)(react@18.3.1)
+        specifier: 6.0.9
+        version: 6.0.9(react-dom@18.3.1)(react@18.3.1)
 
   packages/icons:
     dependencies:
@@ -2641,10 +2638,6 @@ packages:
       '@types/hoist-non-react-statics': 3.3.5
       '@types/react': 18.3.3
       csstype: 3.1.3
-
-  /@types/stylis@4.2.5:
-    resolution: {integrity: sha512-1Xve+NMN7FWjY14vLoY5tL3BVEQ/n42YLwaqJIPYhotZ9uBHt87VceMwWQpzmdEt2TNXIorIFG+YeCUUW7RInw==}
-    dev: false
 
   /@types/stylis@4.2.6:
     resolution: {integrity: sha512-4nebF2ZJGzQk0ka0O6+FZUWceyFv4vWq/0dXBMmrSeAwzOuOd/GxE5Pa64d/ndeNLG73dXoBsRzvtsVsYUv6Uw==}
@@ -6599,26 +6592,6 @@ packages:
       tslib: 2.6.2
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /styled-components@6.1.11(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-Ui0jXPzbp1phYij90h12ksljKGqF8ncGx+pjrNPsSPhbUUjWT2tD1FwGo2LF6USCnbrsIhNngDfodhxbegfEOA==}
-    engines: {node: '>= 16'}
-    peerDependencies:
-      react: '>= 16.8.0'
-      react-dom: '>= 16.8.0'
-    dependencies:
-      '@emotion/is-prop-valid': 1.2.2
-      '@emotion/unitless': 0.8.1
-      '@types/stylis': 4.2.5
-      css-to-react-native: 3.2.0
-      csstype: 3.1.3
-      postcss: 8.4.38
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      shallowequal: 1.1.0
-      stylis: 4.3.2
-      tslib: 2.6.2
     dev: false
 
   /stylis@4.3.2:

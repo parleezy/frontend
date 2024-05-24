@@ -12,10 +12,9 @@
         }
     },
     "scripts": {
-        "build": "tsc && vite build",
-        "clean": "rm -rf node_modules",
-        "lint": "eslint lib --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-        "generate": "node ./src/generate.js && pnpm run lint . --fix && pnpm run build"
+        "build": "cross-env PACKAGE_NAME=icons vite build --config ../../developer/config/vite/vite.library-config-react.mts",
+        "lint": "eslint ./lib --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "clean": "rm -rf node_modules"
     },
     "peerDependencies": {
         "@types/react": "*",
