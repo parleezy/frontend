@@ -38,5 +38,8 @@
         "@types/styled-components": {
             "optional": true
         }
+    },
+    "dependencies": {
+        "@parleezy/styling": "workspace:^"
     }
 }

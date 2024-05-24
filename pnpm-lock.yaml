@@ -182,12 +182,33 @@ importers:
       framer-motion:
         specifier: ^11.2.6
         version: 11.2.6(react-dom@18.3.1)(react@18.3.1)
+      i18next:
+        specifier: ^23.11.5
+        version: 23.11.5
+      i18next-browser-languagedetector:
+        specifier: ^8.0.0
+        version: 8.0.0
+      i18next-http-backend:
+        specifier: ^2.5.2
+        version: 2.5.2
+      i18next-react-postprocessor:
+        specifier: ^3.1.0
+        version: 3.1.0(i18next@23.11.5)(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
+      react-div-100vh:
+        specifier: ^0.7.0
+        version: 0.7.0(react@18.3.1)
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
+      react-i18next:
+        specifier: ^14.1.2
+        version: 14.1.2(i18next@23.11.5)(react-dom@18.3.1)(react@18.3.1)
+      react-spinners:
+        specifier: ^0.13.8
+        version: 0.13.8(react-dom@18.3.1)(react@18.3.1)
       styled-components:
         specifier: ^6.1.11
         version: 6.1.11(react-dom@18.3.1)(react@18.3.1)
@@ -266,6 +287,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@parleezy/styling':
+        specifier: workspace:^
+        version: link:../styling
       '@types/react':
         specifier: '*'
         version: 18.3.3
