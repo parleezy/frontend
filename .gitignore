@@ -86,3 +86,13 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Turbo
+.turbo 
+
+# Output
+dist 
+out 
+
+# Cache
+.DS_STORE
