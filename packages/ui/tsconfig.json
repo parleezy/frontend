@@ -3,7 +3,10 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./lib/*"]
+            "@/*": ["./lib/*"],
+            "@/common/*": ["./lib/components/common/*"],
+            "@/form/*": ["./lib/components/form/*"],
+            "@/typography/*": ["./lib/components/typography/*"]
         },
         "types": ["vitest/globals"]
     },

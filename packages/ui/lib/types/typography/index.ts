@@ -1,0 +1,5 @@
+export * from './_body-size.type'
+export * from './_font-color.type'
+export * from './_font-weight.type'
+export * from './_heading-size.type'
+export * from './_typography-element.type'
