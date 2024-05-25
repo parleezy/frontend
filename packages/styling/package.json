@@ -12,9 +12,9 @@
         }
     },
     "scripts": {
-        "dev": "nodemon --watch ./lib --ext ts,tsx --delay 1 --exec 'pnpm run build'",
-        "build": "vite build",
-        "lint": "eslint ./lib --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+        "build": "cross-env PACKAGE_NAME=styling vite build --config ../../developer/config/vite/vite.styling-config.mts",
+        "lint": "eslint ./lib --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "clean": "rm -rf node_modules"
     },
     "peerDependencies": {
         "@types/react": "*",

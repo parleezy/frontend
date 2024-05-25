@@ -1,0 +1,35 @@
+{
+    "name": "@parleezy/data",
+    "main": "./dist/data.umd.js",
+    "module": "./dist/data.es.js",
+    "types": "./dist/index.d.ts",
+    "unpkg": "./dist/data.umd.js",
+    "exports": {
+        ".": {
+            "main": "./dist/data.umd.js",
+            "module": "./dist/data.es.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "scripts": {
+        "build": "cross-env PACKAGE_NAME=data vite build --config ../../developer/config/vite/vite.icon-config.mts",
+        "lint": "eslint ./lib --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "clean": "rm -rf node_modules"
+    },
+    "peerDependencies": {
+        "@types/react": "*",
+        "@types/react-dom": "*",
+        "axios": "*",
+        "js-cookie": "*",
+        "react": "^18.0",
+        "react-dom": "^18.0"
+    },
+    "peerDependenciesMeta": {
+        "@types/react": {
+            "optional": true
+        },
+        "@types/react-dom": {
+            "optional": true
+        }
+    }
+}

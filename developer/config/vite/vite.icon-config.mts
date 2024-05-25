@@ -17,6 +17,7 @@ export default vite.defineConfig({
             insertTypesEntry: true,
         }),
     ],
+    base: './',
     test: {
         globals: true,
         environment: 'jsdom',
@@ -31,31 +32,16 @@ export default vite.defineConfig({
     build: {
         lib: {
             entry: path.resolve('./lib/index.ts'),
-            name: `data library`,
+            name: `${process.env.PACKAGE_NAME} library`,
             formats: ['es', 'umd'],
-            fileName: (format) => `styling.${format}.js`,
+            fileName: (format) => `${process.env.PACKAGE_NAME}.${format}.js`,
         },
         rollupOptions: {
-            external: [
-                'axios',
-                'framer-motion',
-                'js-cookie',
-                'polished',
-                'react',
-                'react-dom',
-                'styled-components',
-                '@tanstack/react-query',
-            ],
+            external: ['react', 'react-dom'],
             output: {
                 globals: {
-                    '@tanstack/react-query': 'reactQuery',
-                    axios: 'axios',
-                    'js-cookie': 'Cookies',
-                    'framer-motion': 'Framer',
-                    polished: 'Polished',
                     react: 'React',
                     'react-dom': 'ReactDOM',
-                    'styled-components': 'styled',
                 },
             },
         },
