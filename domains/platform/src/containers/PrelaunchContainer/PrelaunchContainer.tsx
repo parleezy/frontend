@@ -1,4 +1,4 @@
-import { Notification, useNotificationsContext } from '@parleezy/ui'
+import { useNotificationsContext } from '@parleezy/ui'
 
 // Styling
 import { Layout } from './PrelaunchContainer.styled'
@@ -15,11 +15,7 @@ export function PrelaunchContainer() {
                 onClick={() =>
                     add({
                         id: new Date().toDateString(),
-                        element: (
-                            <Notification>
-                                <Layout.Notification>Hello My nigga</Layout.Notification>
-                            </Notification>
-                        ),
+                        element: <Layout.Notification>I am inside this bitch</Layout.Notification>,
                     })
                 }
             >

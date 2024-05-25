@@ -29,8 +29,8 @@ const Inner = styled.div`
 const Notification = styled.div`
     border-radius: 8px;
     background: green;
-    width: 500px;
-    height: 90px;
+    width: 300px;
+    padding: 25px;
 `
 
 export const Layout = {

@@ -1,8 +1,9 @@
 import { AnimatePresence } from 'framer-motion'
-import { Fragment, PropsWithChildren, cloneElement, useState } from 'react'
+import { PropsWithChildren, useState } from 'react'
 
 import { NotificationInterface } from '../types/Notification.interface'
 import { NotificationsContext } from './NotificationsContext.context'
+import { Notification } from '../components'
 
 function useNotifications() {
     const [notifications, setNotifications] = useState<NotificationInterface[]>([])
@@ -32,9 +33,7 @@ export function NotificationsProvider({ children }: PropsWithChildren) {
             {children}
             <AnimatePresence>
                 {notifications.map((notification) => (
-                    <Fragment key={notification.id}>
-                        {cloneElement(notification.element, { key: notification.id })}
-                    </Fragment>
+                    <Notification key={notification.id}>{notification.element}</Notification>
                 ))}
             </AnimatePresence>
         </NotificationsContext.Provider>
