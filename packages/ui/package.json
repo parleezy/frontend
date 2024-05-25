@@ -25,10 +25,11 @@
         "@types/styled-components": "*",
         "framer-motion": "^11",
         "polished": "^4.3.1",
-        "react-div-100vh": "^0.7.0",
         "react": "^17.0 || ^18.0",
         "react-circle-flags": "^0.0.20",
+        "react-div-100vh": "^0.7.0",
         "react-dom": "^17.0 || ^18.0",
+        "react-spinners": "^0.13.8",
         "styled-components": "6.0.9"
     },
     "peerDependenciesMeta": {

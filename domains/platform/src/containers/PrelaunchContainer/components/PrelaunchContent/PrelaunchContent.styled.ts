@@ -8,10 +8,13 @@ const Root = styled.div`
     flex-direction: column;
     padding: 0;
     gap: ${({ theme }) => theme.layout.spacing.xl6};
-    flex-basis: 50%;
+    flex-basis: 100%;
+    justify-content: space-between;
 
     @media (min-width: ${({ theme }) => theme.layout.breakpoint.tablet}) {
         padding: ${({ theme }) => theme.layout.spacing.xl7} 0;
+        flex-basis: 50%;
+        justify-content: center;
     }
 `
 

@@ -54,6 +54,7 @@ export default vite.defineConfig({
                     'react-circle-flags': 'reactCircleFlags',
                     'react-div-100vh': 'Div100vh',
                     'react-dom': 'ReactDOM',
+                    'react-spinners': 'ReactSpinners',
                     'styled-components': 'styled',
                 },
             },
