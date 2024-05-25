@@ -4,13 +4,16 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
 // Packages
-import { Button, Input } from '@parleezy/ui'
+import { Button, Input, Loader } from '@parleezy/ui'
 
 // Styling
 import { Layout } from './NewsletterForm.styled'
 
 // Types
 import { i18Namespace } from '@/providers/translations/i18next.namespaces'
+
+// Data
+import { useNewsletterSignupMutation } from '@/data/mutations'
 
 export function NewsletterForm() {
     const { t } = useTranslation()
@@ -26,14 +29,25 @@ export function NewsletterForm() {
 
     type Schema = z.infer<typeof schema>
 
-    const { handleSubmit, formState, register } = useForm<Schema>({
+    const { handleSubmit, formState, register, reset, setError } = useForm<Schema>({
         reValidateMode: 'onBlur',
         shouldFocusError: true,
         resolver: zodResolver(schema),
     })
 
+    const mutation = useNewsletterSignupMutation()
+
     const onSubmit = (data: Schema) => {
         console.warn(data)
+
+        mutation.mutate(data, {
+            onSuccess: () => reset(),
+            onError: () => {
+                setError('email', {
+                    message: t('input.email.failure', { ns: i18Namespace.COMPONENTS_NEWSLETTER_FORM }),
+                })
+            },
+        })
     }
 
     return (
@@ -45,8 +59,12 @@ export function NewsletterForm() {
                     placeholder={t('input.email.placeholder', { ns: i18Namespace.COMPONENTS_NEWSLETTER_FORM })}
                     {...register('email')}
                 />
-                <Button type="submit">{t('button.cta', { ns: i18Namespace.COMPONENTS_NEWSLETTER_FORM })}</Button>
+                <Button disabled={mutation.isPending} type="submit">
+                    {t('button.cta', { ns: i18Namespace.COMPONENTS_NEWSLETTER_FORM })}
+                </Button>
             </Layout.Root>
+
+            <Loader loading={mutation.isPending} />
         </>
     )
 }

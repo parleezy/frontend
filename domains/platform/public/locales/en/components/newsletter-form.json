@@ -3,7 +3,8 @@
         "email": {
             "placeholder": "Enter your email",
             "required": "Email is required",
-            "invalid": "Please enter a valid email"
+            "invalid": "Please enter a valid email",
+            "failure": "We could not sign you up at this moment"
         }
     },
     "button": {
