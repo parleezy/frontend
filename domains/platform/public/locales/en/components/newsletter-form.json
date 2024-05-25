@@ -1,0 +1,11 @@
+{
+    "input": {
+        "email": {
+            "placeholder": "Enter your email"
+        }
+    },
+    "button": {
+        "cta": "Signup",
+        "loading": "Loading"
+    }
+}

@@ -1,5 +1,9 @@
-import { Layout } from './PrelaunchImage.styled'
+import { Layout, Text } from './PrelaunchImage.styled'
 
 export function PrelaunchImage() {
-    return <Layout.Root>Image</Layout.Root>
+    return (
+        <Layout.Root>
+            <Text.Logo>P</Text.Logo>
+        </Layout.Root>
+    )
 }

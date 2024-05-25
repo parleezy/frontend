@@ -2,7 +2,7 @@
 import { Layout } from './PrelaunchContainer.styled'
 
 // Components
-import { PrelaunchHeader, PrelaunchImage } from './components'
+import { PrelaunchContent, PrelaunchImage } from './components'
 
 export function PrelaunchContainer() {
     // return (
@@ -24,7 +24,7 @@ export function PrelaunchContainer() {
     return (
         <Layout.Root>
             <Layout.Inner>
-                <PrelaunchHeader />
+                <PrelaunchContent />
                 <PrelaunchImage />
             </Layout.Inner>
         </Layout.Root>

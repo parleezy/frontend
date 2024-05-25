@@ -4,21 +4,31 @@ import styled from 'styled-components'
 import { H1, P } from '@parleezy/ui'
 
 const Root = styled.div`
-    padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: ${({ theme }) => theme.layout.spacing.xl3};
+    padding: 0;
+    gap: ${({ theme }) => theme.layout.spacing.xl6};
     flex-basis: 50%;
 
     @media (min-width: ${({ theme }) => theme.layout.breakpoint.tablet}) {
         padding: ${({ theme }) => theme.layout.spacing.xl7} 0;
+    }
+`
+
+const Inner = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: ${({ theme }) => theme.layout.spacing.xl2};
+
+    @media (min-width: ${({ theme }) => theme.layout.breakpoint.tablet}) {
         justify-content: center;
     }
 `
 
 export const Layout = {
     Root,
+    Inner,
 }
 
 const Heading = styled(H1)`

@@ -1,3 +1,4 @@
+import { H2 } from '@parleezy/ui'
 import styled from 'styled-components'
 
 const Root = styled.div`
@@ -10,4 +11,15 @@ const Root = styled.div`
 
 export const Layout = {
     Root,
+}
+
+const Logo = styled(H2)`
+    font-family: ${({ theme }) => theme.typography.font.family.brand};
+    text-align: center;
+    font-size: 18rem;
+    line-height: 24rem;
+`
+
+export const Text = {
+    Logo,
 }
