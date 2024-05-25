@@ -1,4 +1,4 @@
-import { NotificationInterface } from './Notification.interface'
+import { NotificationInterface } from '../types/Notification.interface'
 
 export interface NotificationsContextInterface {
     add: (notification: NotificationInterface) => void

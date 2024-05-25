@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion'
 import { Fragment, PropsWithChildren, cloneElement, useState } from 'react'
 
-import { NotificationInterface } from './Notification.interface'
+import { NotificationInterface } from '../types/Notification.interface'
 import { NotificationsContext } from './NotificationsContext.context'
 
 function useNotifications() {
