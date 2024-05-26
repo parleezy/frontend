@@ -16,10 +16,6 @@ const Root = styled(motion.div)<Props>`
         cursor: grabbing;
     }
 
-    // Positioning
-    bottom: 20px;
-    right: 20px;
-
     ${({ $x }) =>
         $x &&
         `
@@ -29,7 +25,7 @@ const Root = styled(motion.div)<Props>`
     ${({ $y }) =>
         $y &&
         `
-        transform: translateX(${$y}px);
+        transform: translateY(${$y}px);
     `}
 `
 

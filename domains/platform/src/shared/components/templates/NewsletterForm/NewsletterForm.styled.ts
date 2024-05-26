@@ -13,6 +13,19 @@ const Root = styled.form`
     }
 `
 
+const Notification = styled.div`
+    border-radius: 8px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 300px;
+    padding: 25px;
+`
+
 export const Layout = {
     Root,
+    Notification,
 }

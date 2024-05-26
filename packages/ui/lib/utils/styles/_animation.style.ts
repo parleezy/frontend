@@ -34,6 +34,8 @@ export class AnimationStyles {
                         return theme.animation.framer.variant.drawer.right
                     case AnimationVariantType.MOBILE:
                         return theme.animation.framer.variant.mobile.primary
+                    case AnimationVariantType.NOTIFICATION_RIGHT:
+                        return theme.animation.framer.variant.notification.right
                     case AnimationVariantType.SCALE:
                         return theme.animation.framer.variant.scale.primary
                     case AnimationVariantType.SLIDE_DOWN:

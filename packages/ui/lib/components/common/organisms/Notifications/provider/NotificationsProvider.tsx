@@ -3,13 +3,13 @@ import { PropsWithChildren, useState } from 'react'
 
 import { NotificationInterface } from '../types/Notification.interface'
 import { NotificationsContext } from './NotificationsContext.context'
-import { Notification } from '../components'
+import { NotificationWrapper } from '../NotificationWrapper'
 
 function useNotifications() {
     const [notifications, setNotifications] = useState<NotificationInterface[]>([])
 
-    const add = (notification: NotificationInterface) => {
-        setNotifications((previous) => [...previous, notification])
+    const add = (notification: Omit<NotificationInterface, 'remove'>) => {
+        setNotifications((previous) => [...previous, { ...notification, remove: () => remove(notification.id) }])
     }
 
     const remove = (id: string) => {
@@ -24,16 +24,18 @@ function useNotifications() {
 }
 
 export function NotificationsProvider({ children }: PropsWithChildren) {
-    const { notifications, ...rest } = useNotifications()
+    const { notifications, add, remove } = useNotifications()
 
     console.warn(notifications.length)
 
     return (
-        <NotificationsContext.Provider value={{ ...rest }}>
+        <NotificationsContext.Provider value={{ add, remove }}>
             {children}
             <AnimatePresence>
                 {notifications.map((notification) => (
-                    <Notification key={notification.id}>{notification.element}</Notification>
+                    <NotificationWrapper key={notification.id} remove={() => remove(notification.id)}>
+                        {notification.element(() => remove(notification.id))}
+                    </NotificationWrapper>
                 ))}
             </AnimatePresence>
         </NotificationsContext.Provider>

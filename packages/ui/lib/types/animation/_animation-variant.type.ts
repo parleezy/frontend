@@ -10,6 +10,7 @@ export const AnimationVariantType = {
     DRAWER_BOTTOM: 'DRAWER_BOTTOM',
     DRAWER_LEFT: 'DRAWER_LEFT',
     DRAWER_RIGHT: 'DRAWER_RIGHT',
+    NOTIFICATION_RIGHT: 'NOTIFICATION_RIGHT',
 } as const
 
 export type AnimationVariantType = (typeof AnimationVariantType)[keyof typeof AnimationVariantType]

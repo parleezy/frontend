@@ -6,6 +6,7 @@
             "@/*": ["./lib/*"],
             "@/common/*": ["./lib/components/common/*"],
             "@/form/*": ["./lib/components/form/*"],
+            "@/notifications/*": ["./lib/components/notifications/*"],
             "@/typography/*": ["./lib/components/typography/*"]
         },
         "types": ["vitest/globals"]

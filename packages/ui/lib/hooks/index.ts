@@ -1,4 +1,5 @@
 export * from './useBelowCenterHalf'
+export * from './useCombinedRefs'
 export * from './useComboKeyPress'
 export * from './useDetectOutsideClick'
 export * from './useElementCoordinates'
