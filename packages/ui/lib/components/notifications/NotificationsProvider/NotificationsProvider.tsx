@@ -20,7 +20,7 @@ export function NotificationsProvider({ children }: PropsWithChildren) {
             <AnimatePresence>
                 {notifications.map((notification) => {
                     return (
-                        <NotificationShell key={notification.id}>
+                        <NotificationShell key={notification.id} remove={() => remove(notification.id)}>
                             {notification.element(() => remove(notification.id))}
                         </NotificationShell>
                     )

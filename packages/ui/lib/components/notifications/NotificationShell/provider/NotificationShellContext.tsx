@@ -5,4 +5,7 @@ import { NotificationShellContextInterface } from './NotificationShellContext.in
 
 export const NotificationShellContext = createContext<NotificationShellContextInterface>({
     ref: { current: null },
+    x: 0,
+    y: 0,
+    handleMouseDown: () => null,
 })

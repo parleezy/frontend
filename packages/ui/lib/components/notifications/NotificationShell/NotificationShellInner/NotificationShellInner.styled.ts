@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 interface Props {
-    $mobile: boolean
     $x?: number
     $y?: number
 }
@@ -17,8 +16,8 @@ const Root = styled(motion.div)<Props>`
         cursor: grabbing;
     }
 
-    ${({ $mobile, $y }) =>
-        $mobile &&
+    ${({ $y }) =>
+        $y &&
         `
             top: 20px;
             left: 20px;
