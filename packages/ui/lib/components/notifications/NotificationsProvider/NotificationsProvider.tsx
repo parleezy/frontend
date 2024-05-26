@@ -7,6 +7,9 @@ import { NotificationsContext } from './NotificationsContext'
 // Hooks
 import { useNotifications } from './useNotifications'
 
+// Components
+import { NotificationShell } from '@/notifications/NotificationShell/NotificationShell'
+
 export function NotificationsProvider({ children }: PropsWithChildren) {
     const { notifications, add, remove } = useNotifications()
 
@@ -16,7 +19,11 @@ export function NotificationsProvider({ children }: PropsWithChildren) {
 
             <AnimatePresence>
                 {notifications.map((notification) => {
-                    return <div key={notification.id}>{notification.element(() => remove(notification.id))}</div>
+                    return (
+                        <NotificationShell key={notification.id}>
+                            {notification.element(() => remove(notification.id))}
+                        </NotificationShell>
+                    )
                 })}
             </AnimatePresence>
         </NotificationsContext.Provider>
