@@ -5,15 +5,17 @@ import { Layout } from './DefaultNotification.styled'
 
 // Components
 import { P } from '@/components/typography'
+import { CloseButton } from '@/components/common'
 
 export interface DefaultNotificationProps {
     description: string
-    leading: ReactNode
+    leading?: ReactNode
     title: string
+    remove?: () => void
 }
 
 export const DefaultNotification = forwardRef<HTMLDivElement, DefaultNotificationProps>(function Base(
-    { description, leading, title, ...rest },
+    { description, leading, title, remove, ...rest },
     ref,
 ) {
     return (
@@ -21,9 +23,13 @@ export const DefaultNotification = forwardRef<HTMLDivElement, DefaultNotificatio
             {leading && <Layout.Leading>{leading}</Layout.Leading>}
 
             <Layout.Content>
-                <P>{title}</P>
-                <P>{description}</P>
+                <P size="SM" weight="semibold">
+                    {title}
+                </P>
+                <P size="SM">{description}</P>
             </Layout.Content>
+
+            {remove && <CloseButton size="SM" onClick={remove} />}
         </Layout.Root>
     )
 })

@@ -3,4 +3,6 @@ import { createContext } from 'react'
 // Interface
 import { NotificationShellContextInterface } from './NotificationShellContext.interface'
 
-export const NotificationShellContext = createContext<NotificationShellContextInterface>({})
+export const NotificationShellContext = createContext<NotificationShellContextInterface>({
+    ref: { current: null },
+})

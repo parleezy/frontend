@@ -3,8 +3,11 @@ import { useTranslation } from 'react-i18next'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
+// Icons
+import { RiMailSendLine } from 'react-icons/ri'
+
 // Packages
-import { Button, Input, Loader, useNotificationsContext } from '@parleezy/ui'
+import { Button, DefaultNotification, Input, Loader, useNotificationsContext } from '@parleezy/ui'
 
 // Styling
 import { Layout } from './NewsletterForm.styled'
@@ -46,9 +49,12 @@ export function NewsletterForm() {
                 notification.add({
                     id: new Date().getTime().toString(),
                     element: (remove?: () => void) => (
-                        <Layout.Notification>
-                            I am a successful notification {remove && <button onClick={remove}>Remove</button>}
-                        </Layout.Notification>
+                        <DefaultNotification
+                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum dolor."
+                            leading={<RiMailSendLine size="18px" />}
+                            remove={remove}
+                            title="Signup Successful!"
+                        />
                     ),
                 })
             },

@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 
 const Root = styled.div`
-    padding: ${({ theme }) => theme.layout.spacing.xl};
     border-radius: ${({ theme }) => theme.layout.radius.lg};
     border: 1px solid ${({ theme }) => theme.color.border.primary.base};
-    box-shadow: ${({ theme }) => theme.effect.shadow.sm};
+    box-shadow: ${({ theme }) => theme.effect.shadow.md};
     background: ${({ theme }) => theme.color.background.primary.base};
+    gap: ${({ theme }) => theme.layout.spacing.xl};
+    padding: ${({ theme }) => theme.layout.spacing.xl};
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: ${({ theme }) => theme.layout.spacing.xl};
+    width: calc(100vw - 40px);
 `
 
 const Leading = styled.div`

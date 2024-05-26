@@ -6,8 +6,20 @@ import { NotificationShellContext } from './NotificationShellContext'
 // Hook
 import { useNotificationShell } from './useNotificationShell'
 
-export function NotificationShellProvider({ children }: PropsWithChildren) {
+// Types
+import { NotificationTimeType } from '@/notifications/types'
+
+interface Props {
+    remove: () => void
+    config?: {
+        time?: NotificationTimeType
+    }
+}
+
+export function NotificationShellProvider({ remove, config, children }: PropsWithChildren<Props>) {
     return (
-        <NotificationShellContext.Provider value={useNotificationShell()}>{children}</NotificationShellContext.Provider>
+        <NotificationShellContext.Provider value={useNotificationShell({ remove, config })}>
+            {children}
+        </NotificationShellContext.Provider>
     )
 }
