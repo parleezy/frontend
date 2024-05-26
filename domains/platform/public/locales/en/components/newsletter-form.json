@@ -10,5 +10,9 @@
     "button": {
         "cta": "Signup",
         "loading": "Loading"
+    },
+    "notification": {
+        "title": "Signup Successful!",
+        "description": "Your email has been added to the launch mailing list, keep an eye out for future updates."
     }
 }

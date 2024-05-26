@@ -26,7 +26,15 @@ const Inner = styled.div`
     }
 `
 
+const Notification = styled.div`
+    border-radius: 8px;
+    background: green;
+    width: 300px;
+    padding: 25px;
+`
+
 export const Layout = {
     Root,
     Inner,
+    Notification,
 }

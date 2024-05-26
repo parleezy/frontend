@@ -3,8 +3,11 @@ import { useTranslation } from 'react-i18next'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
+// Icons
+import { RiMailSendLine } from 'react-icons/ri'
+
 // Packages
-import { Button, Input, Loader } from '@parleezy/ui'
+import { Button, DefaultNotification, Input, Loader, useNotificationsContext } from '@parleezy/ui'
 
 // Styling
 import { Layout } from './NewsletterForm.styled'
@@ -17,6 +20,7 @@ import { useNewsletterSignupMutation } from '@/data/mutations'
 
 export function NewsletterForm() {
     const { t } = useTranslation()
+    const notification = useNotificationsContext()
 
     const schema = z.object({
         email: z
@@ -38,10 +42,25 @@ export function NewsletterForm() {
     const mutation = useNewsletterSignupMutation()
 
     const onSubmit = (data: Schema) => {
-        console.warn(data)
-
         mutation.mutate(data, {
-            onSuccess: () => reset(),
+            onSuccess: () => {
+                reset()
+
+                notification.add({
+                    id: new Date().getTime().toString(),
+                    config: {
+                        position: 'TOP_RIGHT',
+                    },
+                    element: (remove?: () => void) => (
+                        <DefaultNotification
+                            description={t('notification.description', { ns: 'components/newsletter-form' })}
+                            leading={<RiMailSendLine size="18px" />}
+                            remove={remove}
+                            title={t('notification.title', { ns: 'components/newsletter-form' })}
+                        />
+                    ),
+                })
+            },
             onError: () => {
                 setError('email', {
                     message: t('input.email.failure', { ns: i18Namespace.COMPONENTS_NEWSLETTER_FORM }),
