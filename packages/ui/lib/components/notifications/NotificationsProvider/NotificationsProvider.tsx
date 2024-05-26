@@ -1,35 +1,24 @@
-import { PropsWithChildren, useState } from 'react'
+import { PropsWithChildren } from 'react'
+import { AnimatePresence } from 'framer-motion'
 
 // Context
 import { NotificationsContext } from './NotificationsContext'
 
-// Types
-import { NotificationInterface } from '@/notifications/index'
-
-function useNotifications() {
-    const [notifications, setNotifications] = useState<NotificationInterface[]>([])
-
-    return {
-        notifications,
-        add: (notification: NotificationInterface) => setNotifications((previous) => [...previous, notification]),
-        remove: (id: string) =>
-            setNotifications((previous) => previous.filter((notification) => notification.id !== id)),
-    }
-}
+// Hooks
+import { useNotifications } from './useNotifications'
 
 export function NotificationsProvider({ children }: PropsWithChildren) {
-    const { add, remove } = useNotifications()
+    const { notifications, add, remove } = useNotifications()
 
     return (
         <NotificationsContext.Provider value={{ add, remove }}>
             {children}
-            {/* <AnimatePresence>
-                {notifications.map((notification) => (
-                    <NotificationWrapper key={notification.id} remove={() => remove(notification.id)}>
-                        {notification.element(() => remove(notification.id))}
-                    </NotificationWrapper>
-                ))}
-            </AnimatePresence> */}
+
+            <AnimatePresence>
+                {notifications.map((notification) => {
+                    return <div key={notification.id}>{notification.element(() => remove(notification.id))}</div>
+                })}
+            </AnimatePresence>
         </NotificationsContext.Provider>
     )
 }

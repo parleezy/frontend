@@ -56,6 +56,7 @@ export function useNotificationTimer({ setVisible, remove, time }: NotificationT
                 clearTimeout(timeoutId)
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return {
