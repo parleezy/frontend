@@ -1,79 +1,88 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-
-// Hooks
-import { useNotificationTimer } from './useNotificationShellTimer'
-import { useNotificationShellPosition } from './useNotificationShellPosition'
+import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent, TouchEvent as ReactTouchEvent } from 'react'
 
 // Types
-import { NotificationTimeType } from '@/notifications/types'
+import { NotificationPositionType, NotificationTimeType } from '@/notifications/types'
+import { UseMovePositionInterface, useMouseDrag, useMovePosition, useTimer, useTouchDrag } from '@/hooks'
 
 interface Props {
     remove: () => void
     config?: {
+        position?: NotificationPositionType
         time?: NotificationTimeType
     }
 }
 
+const duration = (time: NotificationTimeType): number => {
+    switch (time) {
+        case NotificationTimeType.ACTIONABLE:
+            return 6000
+        case NotificationTimeType.IMPORTANT:
+            return 9000
+        case NotificationTimeType.PERSIST:
+            return 20000
+        case NotificationTimeType.STANDARD:
+        default:
+            return 4000
+    }
+}
 export function useNotificationShell({ remove, config = {} }: Props) {
-    const { time = NotificationTimeType.STANDARD } = config
+    const { position: location = NotificationPositionType.BOTTOM_RIGHT, time = NotificationTimeType.STANDARD } = config
 
     const [dragging, setDragging] = useState<boolean>(false)
     const ref = useRef<HTMLDivElement>(null)
 
-    const timer = useNotificationTimer({ remove, time })
-    const position = useNotificationShellPosition()
+    const timer = useTimer({ duration: duration(time), action: remove })
+    const position: UseMovePositionInterface<HTMLDivElement> = useMovePosition<HTMLDivElement>()
 
-    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        setDragging(true)
-
-        position.start(e)
-        timer.pause()
-    }
-
-    const handleMouseMove = useCallback(
-        (e: MouseEvent) => {
-            if (dragging) {
-                position.move.x(e)
-                position.move.y(e)
-            }
-        },
-        [dragging, position.move],
-    )
-
-    const handleMouseUp = useCallback(() => {
+    const action = () => {
         if (dragging && ref.current) {
-            const elementWidth = ref.current.offsetWidth
-
-            if (Math.abs(position.x) > elementWidth * 0.2) {
+            if (
+                Math.abs(position.y) > ref.current.offsetHeight * 0.2 ||
+                Math.abs(position.x) > ref.current.offsetWidth * 0.2
+            ) {
                 remove()
             } else {
                 timer.resume()
             }
         }
+    }
 
-        setDragging(false)
-        position.reset()
-    }, [timer, dragging, remove, position])
+    const mouse = useMouseDrag<HTMLDivElement>({ dragging, position, complete: () => action(), setDragging })
+    const touch = useTouchDrag<HTMLDivElement>({ dragging, position, complete: () => action(), setDragging })
+
+    const start = (e: ReactMouseEvent<HTMLDivElement> | ReactTouchEvent<HTMLDivElement>) => {
+        position.start(e)
+
+        setDragging(true)
+        timer.pause()
+    }
 
     useEffect(() => {
         if (dragging) {
-            document.addEventListener('mousemove', handleMouseMove)
-            document.addEventListener('mouseup', handleMouseUp)
+            document.addEventListener('mousemove', mouse.move)
+            document.addEventListener('mouseup', mouse.up)
+            document.addEventListener('touchmove', touch.move)
+            document.addEventListener('touchend', touch.end)
         } else {
-            document.removeEventListener('mousemove', handleMouseMove)
-            document.removeEventListener('mouseup', handleMouseUp)
+            document.removeEventListener('mousemove', mouse.move)
+            document.removeEventListener('mouseup', mouse.up)
+            document.removeEventListener('touchmove', touch.move)
+            document.removeEventListener('touchend', touch.end)
         }
 
         return () => {
-            document.removeEventListener('mousemove', handleMouseMove)
-            document.removeEventListener('mouseup', handleMouseUp)
+            document.removeEventListener('mousemove', mouse.move)
+            document.removeEventListener('mouseup', mouse.up)
+            document.removeEventListener('touchmove', touch.move)
+            document.removeEventListener('touchend', touch.end)
         }
-    }, [dragging, handleMouseMove, handleMouseUp])
+    }, [dragging, mouse, touch.end, touch.move])
 
     return {
         ref,
         x: position.x,
         y: position.y,
-        handleMouseDown,
+        location,
+        start,
     }
 }

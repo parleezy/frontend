@@ -1,35 +1,21 @@
 import { useEffect, useState } from 'react'
 
-// Types
-import { NotificationTimeType } from '@/notifications/types'
-
-export interface NotificationTimerProps {
-    time: NotificationTimeType
-    remove: () => void
+export interface UserTimerProps {
+    duration: number
+    action: () => void
 }
 
-export function useNotificationTimer({ remove, time }: NotificationTimerProps) {
+export function useTimer({ duration, action }: UserTimerProps) {
     const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
     const [isPaused, setIsPaused] = useState<boolean>(false)
 
-    const duration = (): number => {
-        switch (time) {
-            case NotificationTimeType.ACTIONABLE:
-                return 6000
-            case NotificationTimeType.IMPORTANT:
-                return 9000
-            case NotificationTimeType.PERSIST:
-                return 20000
-            case NotificationTimeType.STANDARD:
-            default:
-                return 4000
-        }
-    }
-
     const start = () => {
+        if (timeoutId) {
+            clearTimeout(timeoutId)
+        }
         const id = setTimeout(() => {
-            remove()
-        }, duration())
+            action()
+        }, duration)
         setTimeoutId(id)
     }
 

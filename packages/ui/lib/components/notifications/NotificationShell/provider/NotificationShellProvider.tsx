@@ -7,11 +7,12 @@ import { NotificationShellContext } from './NotificationShellContext'
 import { useNotificationShell } from './useNotificationShell'
 
 // Types
-import { NotificationTimeType } from '@/notifications/types'
+import { NotificationPositionType, NotificationTimeType } from '@/notifications/types'
 
 interface Props {
     remove: () => void
     config?: {
+        position?: NotificationPositionType
         time?: NotificationTimeType
     }
 }

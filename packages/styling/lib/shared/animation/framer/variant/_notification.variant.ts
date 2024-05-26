@@ -27,9 +27,9 @@ export const notificationVariant: FramerNotificationVariant = {
     },
     top: {
         left: {
-            visible: { right: '20px', top: '20px' },
-            hidden: { right: '-100%', top: '20px' },
-            exit: { right: '-100%', top: '20px' },
+            visible: { left: '20px', top: '20px' },
+            hidden: { left: '-100%', top: '20px' },
+            exit: { left: '-100%', top: '20px' },
         },
         right: {
             visible: { right: '20px', top: '20px' },
@@ -38,8 +38,8 @@ export const notificationVariant: FramerNotificationVariant = {
         },
     },
     mobile: {
-        visible: { top: '-20px' },
-        hidden: { top: '-50vh' },
-        exit: { top: '-50vh' },
+        visible: { top: '20px', left: '20px' },
+        hidden: { top: '-50vh', left: '20px' },
+        exit: { top: '-50vh', left: '20px' },
     },
 } as const

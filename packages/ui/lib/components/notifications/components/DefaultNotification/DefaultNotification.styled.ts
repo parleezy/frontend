@@ -11,6 +11,10 @@ const Root = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     width: calc(100vw - 40px);
+
+    @media (min-width: ${({ theme }) => theme.layout.breakpoint.tablet}) {
+        max-width: 450px;
+    }
 `
 
 const Leading = styled.div`
@@ -34,10 +38,18 @@ const Leading = styled.div`
 
 const Content = styled.div`
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: ${({ theme }) => theme.layout.spacing.xs};
+`
+
+const Trailing = styled.div`
+    transform: translate(10px, -10px);
 `
 
 export const Layout = {
     Root,
     Leading,
     Content,
+    Trailing,
 }

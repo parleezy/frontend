@@ -11,75 +11,49 @@ import { Layout } from './NotificationShellInner.styled'
 import { useNotificationShellContext } from '@/notifications/NotificationShell/provider'
 
 // Utils
-import { Style } from '@/utils'
+import { Style } from '@/utils/styles'
+
+// Hooks
+import { useWindowSize } from '@/hooks'
+import { NotificationPositionType } from '@/notifications/types'
 
 export function NotificationShellInner({ children, ...rest }: PropsWithChildren) {
     const theme: ThemeInterface = useTheme()
-    const { ref, x, y, handleMouseDown } = useNotificationShellContext()
+    const { ref, x, y, location, start } = useNotificationShellContext()
 
-    const transitions = Style.Animation.Framer.transition('BASE_FAST', theme)
-    const mobileVariant = Style.Animation.Framer.variant('MOBILE', theme)
+    const screen = useWindowSize()
+
+    const transitions = Style.Animation.Framer.transition('NOTIFICATION', theme)
+    const mobileVariant = Style.Animation.Framer.variant('NOTIFICATION_MOBILE', theme)
+
+    const desktopVariant = () => {
+        switch (location) {
+            case NotificationPositionType.TOP_RIGHT:
+                return Style.Animation.Framer.variant('NOTIFICATION_TOP_RIGHT', theme)
+            case NotificationPositionType.TOP_LEFT:
+                return Style.Animation.Framer.variant('NOTIFICATION_TOP_LEFT', theme)
+            case NotificationPositionType.BOTTOM_LEFT:
+                return Style.Animation.Framer.variant('NOTIFICATION_BOTTOM_LEFT', theme)
+            default:
+                return Style.Animation.Framer.variant('NOTIFICATION_BOTTOM_RIGHT', theme)
+        }
+    }
 
     return (
         <Layout.Root
             ref={ref}
-            $x={x}
-            $y={y}
+            $position={screen.width > 768 ? location : 'MOBILE'}
             animate="visible"
             exit="exit"
             initial="hidden"
+            style={screen.width > 768 ? { transform: `translateX(${x}px)` } : { transform: `translateY(${y}px)` }}
             transition={transitions}
-            variants={mobileVariant}
-            onMouseDown={handleMouseDown}
+            variants={screen.width > 768 ? desktopVariant() : mobileVariant}
+            onMouseDown={start}
+            onTouchStart={start}
             {...rest}
         >
             {children}
         </Layout.Root>
     )
 }
-
-// import { PropsWithChildren, forwardRef } from 'react'
-// import { useTheme } from 'styled-components'
-
-// // Packages
-// import { ThemeInterface } from '@parleezy/styling'
-
-// // Styling
-// import { Layout } from './NotificationWrapperInner.styled'
-
-// // Utils
-// import { Style } from '@/utils/styles'
-// import { useNotificationWrapperContext } from './provider/useNotificationWrapperContext'
-// import { useCombinedRefs } from '@/hooks/useCombinedRefs'
-
-// export const NotificationWrapperInner = forwardRef<HTMLDivElement, PropsWithChildren>(function Base(
-//     { children, ...rest },
-//     forwardedRef,
-// ) {
-//     const theme: ThemeInterface = useTheme()
-//     const { x, y, ref, handleMouseDown } = useNotificationWrapperContext()
-
-//     // Combine the forwarded ref with the context ref
-//     const combinedRef = useCombinedRefs(forwardedRef, ref)
-
-//     // Animation
-// const transitions = Style.Animation.Framer.transition('BASE_FAST', theme)
-// const variants = Style.Animation.Framer.variant('NOTIFICATION_RIGHT', theme)
-
-//     return (
-//         <Layout.Root
-//             ref={combinedRef}
-// $x={x}
-// $y={y}
-// animate="visible"
-// exit="exit"
-// initial="hidden"
-// transition={transitions}
-// variants={variants}
-// onMouseDown={handleMouseDown}
-//             {...rest}
-//         >
-//             {children}
-//         </Layout.Root>
-//     )
-// })

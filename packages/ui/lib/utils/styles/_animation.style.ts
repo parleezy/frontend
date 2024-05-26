@@ -17,6 +17,8 @@ export class AnimationStyles {
                         return theme.animation.framer.transition.default.slow
                     case AnimationTransitionType.SCALE_DEFAULT:
                         return theme.animation.framer.transition.scale.primary
+                    case AnimationTransitionType.NOTIFICATION:
+                        return theme.animation.framer.transition.default.notification
                     case AnimationTransitionType.BASE_DEFAULT:
                     default:
                         return theme.animation.framer.transition.default.primary
@@ -34,8 +36,16 @@ export class AnimationStyles {
                         return theme.animation.framer.variant.drawer.right
                     case AnimationVariantType.MOBILE:
                         return theme.animation.framer.variant.mobile.primary
-                    case AnimationVariantType.NOTIFICATION_RIGHT:
-                        return theme.animation.framer.variant.notification.right
+                    case AnimationVariantType.NOTIFICATION_BOTTOM_LEFT:
+                        return theme.animation.framer.variant.notification.bottom.left
+                    case AnimationVariantType.NOTIFICATION_BOTTOM_RIGHT:
+                        return theme.animation.framer.variant.notification.bottom.right
+                    case AnimationVariantType.NOTIFICATION_TOP_LEFT:
+                        return theme.animation.framer.variant.notification.top.left
+                    case AnimationVariantType.NOTIFICATION_TOP_RIGHT:
+                        return theme.animation.framer.variant.notification.top.right
+                    case AnimationVariantType.NOTIFICATION_MOBILE:
+                        return theme.animation.framer.variant.notification.mobile
                     case AnimationVariantType.SCALE:
                         return theme.animation.framer.variant.scale.primary
                     case AnimationVariantType.SLIDE_DOWN:

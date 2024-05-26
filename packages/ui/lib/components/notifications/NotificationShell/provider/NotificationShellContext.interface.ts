@@ -1,8 +1,12 @@
 import { MutableRefObject } from 'react'
 
+// Types
+import { NotificationPositionType } from '@/notifications/types'
+
 export interface NotificationShellContextInterface {
     ref: MutableRefObject<HTMLDivElement | null>
     x: number
     y: number
-    handleMouseDown: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+    location: NotificationPositionType
+    start: (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => void
 }

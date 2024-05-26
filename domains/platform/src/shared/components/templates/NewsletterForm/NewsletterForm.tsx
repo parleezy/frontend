@@ -48,12 +48,15 @@ export function NewsletterForm() {
 
                 notification.add({
                     id: new Date().getTime().toString(),
+                    config: {
+                        position: 'TOP_RIGHT',
+                    },
                     element: (remove?: () => void) => (
                         <DefaultNotification
-                            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum dolor."
+                            description={t('notification.description', { ns: 'components/newsletter-form' })}
                             leading={<RiMailSendLine size="18px" />}
                             remove={remove}
-                            title="Signup Successful!"
+                            title={t('notification.title', { ns: 'components/newsletter-form' })}
                         />
                     ),
                 })

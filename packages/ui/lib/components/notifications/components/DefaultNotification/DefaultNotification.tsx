@@ -23,13 +23,17 @@ export const DefaultNotification = forwardRef<HTMLDivElement, DefaultNotificatio
             {leading && <Layout.Leading>{leading}</Layout.Leading>}
 
             <Layout.Content>
-                <P size="SM" weight="semibold">
+                <P size="MD" weight="semibold">
                     {title}
                 </P>
                 <P size="SM">{description}</P>
             </Layout.Content>
 
-            {remove && <CloseButton size="SM" onClick={remove} />}
+            {remove && (
+                <Layout.Trailing>
+                    <CloseButton size="SM" onClick={remove} />
+                </Layout.Trailing>
+            )}
         </Layout.Root>
     )
 })

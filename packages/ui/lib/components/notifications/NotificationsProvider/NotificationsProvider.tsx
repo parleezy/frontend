@@ -8,7 +8,7 @@ import { NotificationsContext } from './NotificationsContext'
 import { useNotifications } from './useNotifications'
 
 // Components
-import { NotificationShell } from '@/notifications/NotificationShell/NotificationShell'
+import { NotificationShell } from '@/notifications/NotificationShell'
 
 export function NotificationsProvider({ children }: PropsWithChildren) {
     const { notifications, add, remove } = useNotifications()
@@ -20,7 +20,13 @@ export function NotificationsProvider({ children }: PropsWithChildren) {
             <AnimatePresence>
                 {notifications.map((notification) => {
                     return (
-                        <NotificationShell key={notification.id} remove={() => remove(notification.id)}>
+                        <NotificationShell
+                            key={notification.id}
+                            remove={() => remove(notification.id)}
+                            config={{
+                                ...notification.config,
+                            }}
+                        >
                             {notification.element(() => remove(notification.id))}
                         </NotificationShell>
                     )
