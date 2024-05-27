@@ -1,13 +1,14 @@
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { BeatLoader } from 'react-spinners'
 import * as z from 'zod'
 
 // Icons
 import { RiMailSendLine } from 'react-icons/ri'
 
 // Packages
-import { Button, DefaultNotification, Input, Loader, useNotificationsContext } from '@parleezy/ui'
+import { Button, DefaultNotification, Input, useNotificationsContext } from '@parleezy/ui'
 
 // Styling
 import { Layout } from './NewsletterForm.styled'
@@ -70,20 +71,21 @@ export function NewsletterForm() {
     }
 
     return (
-        <>
-            <Layout.Root onSubmit={handleSubmit(onSubmit)}>
-                <Input
-                    error={formState.errors.email?.message}
-                    id="id"
-                    placeholder={t('input.email.placeholder', { ns: i18Namespace.COMPONENTS_NEWSLETTER_FORM })}
-                    {...register('email')}
-                />
-                <Button disabled={mutation.isPending} type="submit">
-                    {t('button.cta', { ns: i18Namespace.COMPONENTS_NEWSLETTER_FORM })}
-                </Button>
-            </Layout.Root>
-
-            <Loader loading={mutation.isPending} />
-        </>
+        <Layout.Root onSubmit={handleSubmit(onSubmit)}>
+            <Input
+                disabled={mutation.isPending}
+                error={formState.errors.email?.message}
+                id="id"
+                placeholder={t('input.email.placeholder', { ns: i18Namespace.COMPONENTS_NEWSLETTER_FORM })}
+                {...register('email')}
+            />
+            <Button disabled={mutation.isPending} type="submit">
+                {mutation.isPending ? (
+                    <BeatLoader color="#fff" size={8} speedMultiplier={0.75} />
+                ) : (
+                    t('button.cta', { ns: i18Namespace.COMPONENTS_NEWSLETTER_FORM })
+                )}
+            </Button>
+        </Layout.Root>
     )
 }
