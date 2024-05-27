@@ -49,7 +49,7 @@ export function LoginForm({ inset = false }: Props) {
         const res = await login(data)
 
         if (res.success) {
-            setTimeout(() => navigate({ to: '/gamecenter' }), 0)
+            setTimeout(() => navigate({ to: '/' }), 0)
         }
     }
 

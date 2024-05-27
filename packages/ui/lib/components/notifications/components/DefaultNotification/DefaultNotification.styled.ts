@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const Root = styled.div`
     border-radius: ${({ theme }) => theme.layout.radius.lg};
-    border: 1px solid ${({ theme }) => theme.color.border.primary.base};
+    border: 1px solid ${({ theme }) => theme.color.border.secondary.base};
     box-shadow: ${({ theme }) => theme.effect.shadow.md};
     background: ${({ theme }) => theme.color.background.primary.base};
     gap: ${({ theme }) => theme.layout.spacing.xl};
