@@ -5,6 +5,9 @@ import { useTranslation } from 'react-i18next'
 import { AnimatePresence } from 'framer-motion'
 import { PropagateLoader } from 'react-spinners'
 
+// Packages
+import { useAuthenticationContext } from '@parleezy/data'
+
 // Config
 import { routeTree } from '@/routeTree.gen'
 
@@ -18,6 +21,7 @@ import { queryClient } from '@/providers/query'
 const router = createRouter({
     routeTree,
     context: {
+        authentication: undefined!,
         queryClient,
     },
     defaultPreload: 'intent',
@@ -39,12 +43,13 @@ const Root = styled(Div100vh)`
 `
 
 export function Provider() {
+    const authentication = useAuthenticationContext()
     const i18n = useTranslation()
 
     return (
         <>
-            {i18n.ready ? (
-                <TanstackRouterProvider router={router} />
+            {i18n.ready && authentication.initialised ? (
+                <TanstackRouterProvider context={{ authentication }} router={router} />
             ) : (
                 <AnimatePresence>
                     <Root>

@@ -17,7 +17,7 @@ export function LoginContainer() {
 
     return (
         <Layout.Root>
-            <Layout.Advertisement>Ad</Layout.Advertisement>
+            <Layout.Advertisement></Layout.Advertisement>
             <Layout.Form>
                 <Layout.FormInner>
                     <Layout.Header>
@@ -28,6 +28,7 @@ export function LoginContainer() {
                             {t('content.header.supporting', { ns: i18Namespace.PAGES_LOGIN })}
                         </P>
                     </Layout.Header>
+
                     <LoginForm inset />
 
                     <Link.Signup to="/signup">

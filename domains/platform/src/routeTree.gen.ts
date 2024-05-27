@@ -11,19 +11,43 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as LoginImport } from './routes/login'
+import { Route as LogoutImport } from './routes/logout'
+import { Route as ProtectedRouteImport } from './routes/_protected/route'
+import { Route as AuthorizeRouteImport } from './routes/_authorize/route'
 import { Route as IndexImport } from './routes/index'
+import { Route as ProtectedGamecenterImport } from './routes/_protected/gamecenter'
+import { Route as AuthorizeLoginImport } from './routes/_authorize/login'
 
 // Create/Update Routes
 
-const LoginRoute = LoginImport.update({
-  path: '/login',
+const LogoutRoute = LogoutImport.update({
+  path: '/logout',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProtectedRouteRoute = ProtectedRouteImport.update({
+  id: '/_protected',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthorizeRouteRoute = AuthorizeRouteImport.update({
+  id: '/_authorize',
   getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const ProtectedGamecenterRoute = ProtectedGamecenterImport.update({
+  path: '/gamecenter',
+  getParentRoute: () => ProtectedRouteRoute,
+} as any)
+
+const AuthorizeLoginRoute = AuthorizeLoginImport.update({
+  path: '/login',
+  getParentRoute: () => AuthorizeRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -37,19 +61,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/login': {
-      id: '/login'
+    '/_authorize': {
+      id: '/_authorize'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthorizeRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/_protected': {
+      id: '/_protected'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof ProtectedRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/logout': {
+      id: '/logout'
+      path: '/logout'
+      fullPath: '/logout'
+      preLoaderRoute: typeof LogoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/_authorize/login': {
+      id: '/_authorize/login'
       path: '/login'
       fullPath: '/login'
-      preLoaderRoute: typeof LoginImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof AuthorizeLoginImport
+      parentRoute: typeof AuthorizeRouteImport
+    }
+    '/_protected/gamecenter': {
+      id: '/_protected/gamecenter'
+      path: '/gamecenter'
+      fullPath: '/gamecenter'
+      preLoaderRoute: typeof ProtectedGamecenterImport
+      parentRoute: typeof ProtectedRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexRoute, LoginRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  AuthorizeRouteRoute: AuthorizeRouteRoute.addChildren({ AuthorizeLoginRoute }),
+  ProtectedRouteRoute: ProtectedRouteRoute.addChildren({
+    ProtectedGamecenterRoute,
+  }),
+  LogoutRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -60,14 +119,36 @@ export const routeTree = rootRoute.addChildren({ IndexRoute, LoginRoute })
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/login"
+        "/_authorize",
+        "/_protected",
+        "/logout"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/login": {
-      "filePath": "login.tsx"
+    "/_authorize": {
+      "filePath": "_authorize/route.tsx",
+      "children": [
+        "/_authorize/login"
+      ]
+    },
+    "/_protected": {
+      "filePath": "_protected/route.tsx",
+      "children": [
+        "/_protected/gamecenter"
+      ]
+    },
+    "/logout": {
+      "filePath": "logout.tsx"
+    },
+    "/_authorize/login": {
+      "filePath": "_authorize/login.tsx",
+      "parent": "/_authorize"
+    },
+    "/_protected/gamecenter": {
+      "filePath": "_protected/gamecenter.tsx",
+      "parent": "/_protected"
     }
   }
 }

@@ -1,4 +1,5 @@
 import { NotificationsProvider } from '@parleezy/ui'
+import { AuthenticationProvider } from '@parleezy/data'
 
 // Providers
 import { Provider as QueryProvider } from './query'
@@ -10,11 +11,13 @@ export function Providers() {
     return (
         <ThemeProvider>
             <NotificationsProvider>
-                <TranslationsProvider>
-                    <QueryProvider>
-                        <RouterProvider />
-                    </QueryProvider>
-                </TranslationsProvider>
+                <AuthenticationProvider root={import.meta.env.VITE_API_ROOT}>
+                    <TranslationsProvider>
+                        <QueryProvider>
+                            <RouterProvider />
+                        </QueryProvider>
+                    </TranslationsProvider>
+                </AuthenticationProvider>
             </NotificationsProvider>
         </ThemeProvider>
     )
