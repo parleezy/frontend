@@ -1,5 +1,6 @@
 export const i18Namespace = {
-    COMPONENTS_PRELAUNCH_HEADER: 'components/prelaunch-header',
+    COMPONENTS_LOGIN_FORM: 'components/login-form',
+    PAGES_LOGIN: 'pages/login',
     PAGES_NOT_FOUND: 'pages/not-found',
 } as const
 
