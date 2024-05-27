@@ -5,5 +5,5 @@ export interface Height {
 
 export const height: Height = {
     md: '2.5rem', //40px
-    lg: '2.75rem', // 44px
+    lg: '3rem', // 48px
 } as const
