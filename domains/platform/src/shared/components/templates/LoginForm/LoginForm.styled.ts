@@ -5,29 +5,12 @@ const Root = styled.form`
     display: flex;
     flex-direction: column;
     gap: ${({ theme }) => theme.layout.spacing.xl2};
-    width: 1000%;
-
-    @media (min-width: ${({ theme }) => theme.layout.breakpoint.tablet}) {
-        max-width: 350px;
-    }
+    width: 100%;
 `
 
 export const Layout = {
     Root,
 }
-
-const Login = styled(TanstackLink)`
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: ${({ theme }) => theme.layout.spacing.sm};
-    color: ${({ theme }) => theme.color.brand.tertiary};
-
-    &:hover {
-        text-decoration: underline;
-    }
-`
 
 const Recover = styled(TanstackLink)`
     text-align: right;
@@ -41,6 +24,5 @@ const Recover = styled(TanstackLink)`
 `
 
 export const Link = {
-    Login,
     Recover,
 }

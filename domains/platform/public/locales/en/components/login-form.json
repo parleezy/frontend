@@ -15,5 +15,9 @@
     "button": {
         "cta": "Login",
         "loading": "Loading"
+    },
+    "link": {
+        "recover": "Forgot Password?",
+        "signup": "Dont have an account? Signup"
     }
 }

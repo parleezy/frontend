@@ -83,7 +83,7 @@ export function LoginForm({ inset = false }: Props) {
                 </>
             )}
 
-            <Link.Recover to="/recover">Forgot Password?</Link.Recover>
+            <Link.Recover to="/recover">{t('link.recover', { ns: i18Namespace.COMPONENTS_LOGIN_FORM })}</Link.Recover>
 
             <Button full type="submit">
                 {t('button.cta', { ns: i18Namespace.COMPONENTS_LOGIN_FORM })}
