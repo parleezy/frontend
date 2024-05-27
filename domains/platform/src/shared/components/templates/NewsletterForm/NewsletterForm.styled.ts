@@ -11,6 +11,10 @@ const Root = styled.form`
         line-height: ${({ theme }) => theme.typography.heading.height.lg};
         max-width: 500px;
     }
+
+    button {
+        min-width: 100px;
+    }
 `
 
 const Notification = styled.div`
