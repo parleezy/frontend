@@ -5,5 +5,5 @@ export interface FontFamily {
 
 export const fontFamily: FontFamily = {
     primary: `'Inter', system-ui, Arial, sans-serif;`,
-    brand: 'payback',
+    brand: `'Payback', Arial, sans-serif;`,
 } as const

@@ -12,7 +12,7 @@ const Root = styled(Div100vh)`
     @media (min-width: ${({ theme }) => theme.layout.breakpoint.tablet}) {
         flex-direction: row;
         justify-content: center;
-        padding: ${({ theme }) => theme.layout.spacing.xl};
+        padding: ${({ theme }) => theme.layout.spacing.xl} ${({ theme }) => theme.layout.spacing.xl6};
     }
 `
 
